@@ -1,7 +1,7 @@
 export interface IObserver<T = any> {
   next(value: T): any;
-  error(error: any): any;
-  complete(): any;
+  error?(error: any): any;
+  complete?(): any;
 }
 
 export interface ISubscription {
@@ -10,4 +10,8 @@ export interface ISubscription {
 
 export interface IProducer {
   (observer: IObserver): ISubscription;
+}
+
+export interface IObservable {
+  subscribe(observer: IObserver): ISubscription;
 }
