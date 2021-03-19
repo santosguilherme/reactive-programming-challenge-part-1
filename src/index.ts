@@ -12,8 +12,8 @@ import {
   millisecondsToStr,
 } from "./utils";
 
-let counter = 0,
-  id: NodeJS.Timeout = null;
+let counter = 0;
+let id: NodeJS.Timeout = null;
 
 btnStart$.subscribe({
   next() {
