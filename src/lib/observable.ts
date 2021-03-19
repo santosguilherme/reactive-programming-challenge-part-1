@@ -1,11 +1,13 @@
 import { IObservable, IObserver, IProducer, ISubscription } from "../types";
 
-export const Observable = (producer: IProducer): IObservable => {
-    const subscribe = (observer: IObserver): ISubscription => {
-        return producer(observer);
-    };
+export class Observable implements IObservable {
+    internalProducer: IProducer;
 
-    return {
-        subscribe
+    constructor(producer: IProducer) {
+        this.internalProducer = producer;
     }
-};
+
+    subscribe(observer: IObserver): ISubscription {
+        return this.internalProducer(observer);
+    }
+}
